@@ -6,6 +6,7 @@ export default class Createcust extends Component {
      state ={ 
     Name:'',
     Email:'',
+    Phone:'',
     Street:'',
     City:'',
     State:'',
@@ -28,6 +29,7 @@ newCustomer=(e)=>{
     axios.post("http://localhost:5000/addCustomer",{
         name:this.state.Name,
         email:this.state.Email,
+        phone:this.state.Phone,
         line1:this.state.Street,
         city:this.state.City,
         state:this.state.State,
@@ -47,6 +49,7 @@ newCustomer=(e)=>{
     this.setState({
         Name:'',
         Email:'',
+        Phone:'',
         Street:'',
         City:'',
         State:'',
@@ -69,6 +72,10 @@ newCustomer=(e)=>{
         <label className="inputs">
         Email:
           <input name="Email" type="text" value={this.state.Email} onChange={this.handleChange} />
+        </label>
+        <label className="inputs">
+        Phone Number:
+          <input name="Phone" type="text" value={this.state.Phone} onChange={this.handleChange} />
         </label>
         <label className="inputs">
         Street Address:
