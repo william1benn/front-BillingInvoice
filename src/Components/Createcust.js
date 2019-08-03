@@ -63,7 +63,7 @@ newCustomer=(e)=>{
 
     render() {
         return (
-            <div >
+            <div className ="forms" >
                 <form onSubmit={this.newCustomer} className="Create-Customer">
         <label className="inputs">
         Name:

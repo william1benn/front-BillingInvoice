@@ -4,13 +4,18 @@ import axios from 'axios';
 import Main from './Components/Main';
 import './App.css';
 
+import AuthState from './context/auth/AuthState';
+import AlertState from './context/alert/AlertState';
+
+
+
 function App() {
   return (
-    <div>
-
+    <AuthState>
+      <AlertState>
      <Main />
-
-    </div>
+    </AlertState>
+      </AuthState>
   );
 }
 

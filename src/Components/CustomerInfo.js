@@ -19,10 +19,18 @@ state={
 
     
     render() {
+
+        console.log(this.state.aCustomer)
         return (
             <div>
 
 <h2>{this.state.aCustomer.name}</h2>
+<h5>{this.state.aCustomer.email}</h5>
+<h5>{this.state.aCustomer.phone}</h5>
+<h5>{this.state.aCustomer.line1}</h5>
+<h5>{this.state.aCustomer.description}</h5>
+<h5>{this.state.aCustomer.balance}</h5>
+
 
 <Link to ={`/DelUser/${this.state.aCustomer.id}`}>
 <button 

@@ -5,8 +5,13 @@ import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Findcust from './Findcust';
 import FoundCust from './FoundCust';
 import Nav from './Nav';
+import NotFound from './NotFound';
 import CustomerInfo from './CustomerInfo';
 import DelUser from './DelUser';
+import Register from './Register';
+import Login from './Login';
+import Alerts from '../Components/Alerts';
+
 
 export default class Main extends Component {
 
@@ -45,17 +50,20 @@ export default class Main extends Component {
             <div>
 
               <Nav />
-{/* <Switch> */}
 
+            <Alerts/>
               <Route exact path='/create' component={Createcust}/>
-
-              <Route exact path='/find' render={(props) => <Findcust theCust = {this.state.allUsers} searchRes = {this.searchRes} />}/>
-              <Route exact path='/find' render={(props) => <FoundCust theCustomers = {this.state.searched} loading={this.state.loading} />}/>
+              <Route exact path='/findCustomer' render={(props) => <Findcust theCust = {this.state.allUsers} searchRes = {this.searchRes} />}/>
+              <Route exact path='/findCustomer' render={(props) => <FoundCust theCustomers = {this.state.searched} loading={this.state.loading} />}/>
               <Route exact path='/customerInfo/:custid' component={CustomerInfo} />
               <Route exact path='/DelUser/:custid' component={DelUser} />
+              <Route exact path= '/Register' component={Register} />
+              <Route exact path= '/Login' component={Login} />
+            
+              {/* <Route component={NotFound} /> */}
 
 
-{/* </Switch> */}
+
             </div>
         )
     }
