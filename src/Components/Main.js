@@ -10,6 +10,7 @@ import CustomerInfo from './CustomerInfo';
 import DelUser from './DelUser';
 import Register from './Register';
 import Login from './Login';
+import Home from './Home';
 import Alerts from '../Components/Alerts';
 
 
@@ -52,6 +53,7 @@ export default class Main extends Component {
               <Nav />
 
             <Alerts/>
+              
               <Route exact path='/create' component={Createcust}/>
               <Route exact path='/findCustomer' render={(props) => <Findcust theCust = {this.state.allUsers} searchRes = {this.searchRes} />}/>
               <Route exact path='/findCustomer' render={(props) => <FoundCust theCustomers = {this.state.searched} loading={this.state.loading} />}/>
@@ -59,6 +61,7 @@ export default class Main extends Component {
               <Route exact path='/DelUser/:custid' component={DelUser} />
               <Route exact path= '/Register' component={Register} />
               <Route exact path= '/Login' component={Login} />
+              <Route exact path='/' component ={Home} />
             
               {/* <Route component={NotFound} /> */}
 

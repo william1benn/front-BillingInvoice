@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, useContext, useEffect} from 'react';
+import AuthContext from '../context/auth/authContext';
 import axios from 'axios';
 
 
 export default class Findcust extends Component {
+  
     constructor(props){
         super(props)
         }
@@ -12,14 +14,13 @@ export default class Findcust extends Component {
           emptyInput:true,
     
       }
+  
     
       handleChange=(e)=>{
     
     this.setState({input: e.target.value})
     let clone = [...this.props.theCust]
     
-    console.log("-=-=-=-=",clone[0].phone)
-
       let filteredSearch = clone.filter((cust,i)=>{
           if(cust.phone){
               console.log(cust.phone)
@@ -36,6 +37,13 @@ export default class Findcust extends Component {
     }
 
     render() {
+
+      const authContext = useContext(AuthContext);
+      useEffect(()=> {
+        authContext.loadUser();
+        //eslint-disable-next-line
+      },[]);
+
         return (
             <div>
             
