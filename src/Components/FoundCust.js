@@ -9,6 +9,12 @@ export default class Users extends Component {
       super(props);
       this.state={}
     }
+
+     componentDidMount(){
+       this.props.getCust()
+     }
+
+
       render() {
     if(this.props.loading){
     
@@ -17,7 +23,20 @@ export default class Users extends Component {
     }else{
     
       return (
-        <div>
+        <div className ="container">
+        <div className = "row">
+        <table className="responsive-table striped custTable col s12" >
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>State</th>
+              <th>Balance</th>
+          </tr>
+        </thead>
+
+        <tbody>
     
          {this.props.theCustomers.map(user=>(
     
@@ -25,7 +44,10 @@ export default class Users extends Component {
     
         ))}
     
-        </div>
+    </tbody>
+      </table>
+      </div>
+      </div>
       
       );
     

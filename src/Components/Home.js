@@ -17,4 +17,4 @@ const authContext = useContext(AuthContext);
     )
 }
 
-export default Home
+export default Home;

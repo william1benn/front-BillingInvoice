@@ -1,8 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
+import AuthContext from '../context/auth/authContext';
+import hookClass from '../hookClass';
 
 
-export default class Createcust extends Component {
+ class Createcust extends Component {
+  //  constructor(props){
+  //    super(props)
+  //    this.user = props.myHookValue
+  //  }
      state ={ 
     Name:'',
     Email:'',
@@ -14,7 +20,9 @@ export default class Createcust extends Component {
     Country:'',
     Desc:'',
     Balance:'',
+    loggedin:false
     }
+
 
    handleChange = (e) =>{
 console.log(e.target.name)
@@ -39,14 +47,8 @@ newCustomer=(e)=>{
         balance:this.state.Balance,
 
     }).then((theRes)=>{
-        console.log(theRes)
-      
-    }).catch((err)=>{
-      console.log(err)
 
-    })
-    
-    this.setState({
+      this.setState({
         Name:'',
         Email:'',
         Phone:'',
@@ -58,57 +60,86 @@ newCustomer=(e)=>{
         Desc:'',
         Balance:'',
     })
+
+    this.props.history.push('/findCustomer')
+      
+      
+    }).catch((err)=>{
+      console.log(err)
+
+    })
+    
+   
 }
 
 
     render() {
+  
         return (
-            <div className ="forms" >
-                <form onSubmit={this.newCustomer} className="Create-Customer">
-        <label className="inputs">
-        Name:
-          <input name='Name' type="text" value={this.state.Name} onChange={this.handleChange} />
-        </label>
-        <label className="inputs">
-        Email:
-          <input name="Email" type="text" value={this.state.Email} onChange={this.handleChange} />
-        </label>
-        <label className="inputs">
-        Phone Number:
-          <input name="Phone" type="text" value={this.state.Phone} onChange={this.handleChange} />
-        </label>
-        <label className="inputs">
-        Street Address:
-          <input name="Street" type="text" value={this.state.Street} onChange={this.handleChange} />
-        </label>
-        <label className="inputs">
-        City:
-          <input name="City" type="text" value={this.state.City} onChange={this.handleChange} />
-        </label>
-        <label className="inputs">
-        State:
-          <input name="State" type="text" value={this.state.State} onChange={this.handleChange} />
-        </label>
-        <label className="inputs">
-        Zip Code:
-          <input name="Zip" type="text" value={this.state.Zip} onChange={this.handleChange} />
-        </label>
-        <label className="inputs">
-        Country:
-          <input name="Country" type="text" value={this.state.Country} onChange={this.handleChange} />
-        </label>
-        <label>
-        Description Of Charge:
-          <input name="Desc" type="text" value={this.state.Desc} onChange={this.handleChange} />
-        </label>
-        <label className="inputs">
-        Balance:
-          <input name="Balance" type="text" value={this.state.Balance} onChange={this.handleChange} />
-        </label>
-
-        <button>Submit</button>
-            </form>
+          <div className ="container">
+            {/* {this.user.name} */}
+          <div className="row">
+            <h2>Enter Customer Information</h2>
+          <form onSubmit={this.newCustomer} className="Create-Customer" class="col s12">
+            <div className="row">
+              <div class="input-field col s6">
+                <input name='Name' id="name" type="text" value={this.state.Name} onChange={this.handleChange} class="validate"/>
+                <label htmlFor="first_name">Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input  name="Email" type="email" value={this.state.Email} onChange={this.handleChange} class="validate"/>
+                <label>Email</label>
+              </div>
             </div>
+            <div className="row">
+              <div class="input-field col s6">
+                <input  name="Phone" type="text" value={this.state.Phone} onChange={this.handleChange} className="validate"/>
+                <label>Phone Number</label>
+              </div>
+              <div class="input-field col s6">
+                <input name="Balance" type="text" value={this.state.Balance} onChange={this.handleChange}  class="validate"/>
+                <label for="password">Balance</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input name="Street" type="text" value={this.state.Street} onChange={this.handleChange}  class="validate"/>
+                <label>Street Address</label>
+              </div>
+            </div>
+              <div class="row">
+              <div class="input-field col s4">
+                <input input name="City" type="text" value={this.state.City} onChange={this.handleChange}  class="validate"/>
+                <label htmlFor="city">City</label>
+              </div>
+              <div class="input-field col s4">
+                <input name="State" type="text" value={this.state.State} onChange={this.handleChange} class="validate"/>
+                <label>State</label>
+              </div>
+                  <div class="input-field col s4">
+                <input name="Zip" type="text" value={this.state.Zip} onChange={this.handleChange}  class="validate"/>
+                <label>Zip Code</label>
+              </div>
+            </div>
+        <div class="row">
+              <div class="input-field col s12">
+                <input name="Desc" type="text" value={this.state.Desc} onChange={this.handleChange} class="validate"/>
+                <label>Description Of Charge</label>
+              </div>
+              </div>
+              <span className="custButton">
+              <button className="waves-effect waves-green btn-large">Create Customer</button>
+              </span>
+          </form>
+        </div> 
+      </div>        
+
+
         )
     }
 }
+
+
+// Createcust = hookClass(Createcust)
+
+export default Createcust;

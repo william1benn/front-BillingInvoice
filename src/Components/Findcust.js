@@ -38,17 +38,11 @@ export default class Findcust extends Component {
 
     render() {
 
-      const authContext = useContext(AuthContext);
-      useEffect(()=> {
-        authContext.loadUser();
-        //eslint-disable-next-line
-      },[]);
-
         return (
-            <div>
+            <div className="searchBox">
             
  <div className="row">
-    <form className="col s12">
+    <form className="col s6">
       <div className="row">
         <div className="input-field col s12">
         <input name='Name' type="text" value={this.state.input} onChange={this.handleChange} />
@@ -63,3 +57,4 @@ export default class Findcust extends Component {
         )
     }
 }
+

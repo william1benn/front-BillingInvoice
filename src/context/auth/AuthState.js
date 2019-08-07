@@ -72,8 +72,33 @@ dispatch({
     }
 }
 //Login User
+const login = async formData =>{
+    const config = {
+        headers:{
+            'Content-Type':'application/json'
+        }
+    }
+    try{
+
+const res = await axios.post('http://localhost:5000/auth/loginhere',formData,config);
+
+dispatch({
+    type: LOGIN_SUCCESS,
+    payload:res.data,
+});
+
+loadUser();
+    }catch (error){
+        dispatch({
+            type:LOGIN_FAIL,
+            payload:error.response.data.msg,
+        })
+    }
+}
 
 //Logout
+
+const logout = () => dispatch({type: LOGOUT})
 
 //Clear Errors
 
@@ -89,6 +114,8 @@ const clearErrors = () => dispatch({type:CLEAR_ERRORS});
             user:state.user,
             clearErrors,
             register,
+            login,
+            logout,
             loadUser,
         }}
         >
@@ -96,5 +123,6 @@ const clearErrors = () => dispatch({type:CLEAR_ERRORS});
         </AuthContext.Provider>
     );
 };
+
 
 export default AuthState;

@@ -14,7 +14,7 @@ useEffect(()=>{
 		props.history.push('/')
 	}
 	if(error==='User Email Already Exists'){
-		setAlert(error,'danger');
+		setAlert(error,'#ef5350 red lighten-1');
 		clearErrors();
 	}
 	//eslint-disable-next-line
